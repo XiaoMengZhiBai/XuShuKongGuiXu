@@ -1,0 +1,239 @@
+/* =================== 主按钮样式 =================== */
+.ss-btn {
+    position: fixed;
+    width: 170px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(35, 5, 10, 0.95), rgba(25, 8, 15, 0.92));
+    color: #ff4444;
+    border: 2px solid #900;
+    border-radius: 16px;
+    font: bold 22px "FZBeiwaiKai", "SimHei", serif;
+    cursor: pointer;
+    user-select: none;
+    box-shadow:
+        0 0 20px rgba(255, 50, 50, 0.6),
+        inset 0 0 20px rgba(255, 80, 80, 0.25);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 10000;
+}
+
+.ss-btn:hover {
+    background: linear-gradient(145deg, rgba(100, 15, 30, 0.95), rgba(80, 20, 40, 0.95));
+    color: #fff;
+    transform: translateY(-6px) scale(1.05) rotateZ(-1deg);
+    box-shadow:
+        0 0 25px rgba(255, 80, 80, 0.7),
+        0 0 40px rgba(255, 0, 0, 0.5),
+        inset 0 0 15px rgba(255, 120, 120, 0.3);
+}
+
+/* =================== 模态背景 =================== */
+.ss-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    z-index: 10003;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.ss-modal-backdrop.show {
+    opacity: 1;
+}
+
+/* =================== 模态窗口 =================== */
+.ss-settings-modal,
+.ss-exit-container {
+    padding: 30px;
+    background: linear-gradient(145deg, rgba(20, 0, 0, 0.95), rgba(25, 0, 0, 0.98));
+    border: 2px solid rgba(255, 60, 60, 0.6);
+    border-radius: 18px;
+    box-shadow: 0 0 40px rgba(255, 40, 40, 0.5), inset 0 0 15px rgba(255, 60, 60, 0.2);
+    color: #ffcccc;
+    font-family: 'SimHei', sans-serif;
+    transform: scale(0.9);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+.ss-settings-modal.show,
+.ss-exit-container.show {
+    transform: scale(1);
+    box-shadow: 0 0 50px rgba(255, 60, 60, 0.7), inset 0 0 20px rgba(255, 80, 80, 0.3);
+}
+
+.ss-modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff9999;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* =================== 设置项 =================== */
+.ss-setting-item {
+    margin-bottom: 18px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 100, 100, 0.2);
+}
+
+.ss-setting-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ffdddd;
+}
+
+.ss-setting-label span:last-child {
+    font-weight: bold;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* =================== 滑块优化 =================== */
+.ss-setting-item input[type=range] {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, rgba(255, 80, 80, 0.2), rgba(255, 100, 100, 0.15));
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+.ss-setting-item input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -4px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ff4444, #ff8888);
+    box-shadow: 0 0 12px rgba(255, 80, 80, 0.9);
+    transition: background 0.2s, transform 0.15s;
+}
+
+.ss-setting-item input[type=range]::-webkit-slider-thumb:hover {
+    background: linear-gradient(145deg, #ff6666, #ffaaaa);
+    transform: scale(1.1);
+}
+
+.ss-setting-item input[type=range]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ff4444, #ff8888);
+    box-shadow: 0 0 12px rgba(255, 80, 80, 0.9);
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.ss-setting-item input[type=range]::-moz-range-thumb:hover {
+    background: linear-gradient(145deg, #ff6666, #ffaaaa);
+    transform: scale(1.1);
+}
+
+/* =================== 模态底部按钮 =================== */
+.ss-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255, 100, 100, 0.2);
+}
+
+.ss-modal-close,
+.ss-modal-action-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    transition: all 0.2s;
+}
+
+.ss-modal-close {
+    background: linear-gradient(145deg, #900, #c00);
+    color: #fff;
+}
+
+.ss-modal-close:hover {
+    background: linear-gradient(145deg, #c00, #f33);
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* 特殊动作按钮 */
+.ss-modal-action-btn.load-audio {
+    background: linear-gradient(145deg, #077, #0aa);
+    color: #fff;
+}
+.ss-modal-action-btn.load-audio:hover {
+    background: linear-gradient(145deg, #0aa, #0ff);
+}
+
+.ss-modal-action-btn.mode {
+    background: linear-gradient(145deg, #505, #707);
+    color: #fff;
+}
+.ss-modal-action-btn.mode:hover {
+    background: linear-gradient(145deg, #707, #909);
+}
+
+/* =================== 退出确认 =================== */
+.ss-exit-container {
+    width: 320px;
+    text-align: center;
+}
+
+.ss-exit-container p {
+    font-size: 16px;
+    margin: 15px 0 25px;
+    color: #ffdddd;
+}
+
+.ss-exit-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ss-exit-btn {
+    width: 48%;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ss-exit-btn.confirm {
+    background: linear-gradient(145deg, #ff4444, #ff8888);
+    color: #fff;
+    border: 1px solid #c00;
+}
+.ss-exit-btn.confirm:hover {
+    background: linear-gradient(145deg, #c00, #ff4444);
+    transform: scale(1.05);
+}
+
+.ss-exit-btn.cancel {
+    background: linear-gradient(145deg, #444, #666);
+    color: #fff;
+    border: 1px solid #555;
+}
+.ss-exit-btn.cancel:hover {
+    background: linear-gradient(145deg, #666, #888);
+    transform: scale(1.05);
+}

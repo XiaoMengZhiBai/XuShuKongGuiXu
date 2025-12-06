@@ -1,0 +1,189 @@
+/* =========================================================
+   字体引入（顺序：中文楷体优先，西文字体备用）
+========================================================= */
+@font-face {
+    font-family: 'FZBeiwaiKai';
+    src: url('../../fonts/方正北魏楷书_GBK.woff') format('woff');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FZXingKai';
+    src: url('../../fonts/方正行楷_GBK.woff') format('woff');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GardenMing';
+    src: url('../../fonts/花园明朝体A.woff') format('woff');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SIMKAI';
+    src: url('../../fonts/SIMKAI.woff') format('woff');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MPlus1M';
+    src: url('../../fonts/mplus-1m-regular.woff') format('woff');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MPlus2P';
+    src: url('../../fonts/mplus-2p-bold-sub.woff') format('woff');
+    font-display: swap;
+}
+
+/* =========================================================
+   全局变量（统一古风暗色体系）
+========================================================= */
+:root {
+    /* 主色调 */
+    --primary-red: rgba(120, 0, 50, 0.45); 
+    --secondary-green: #2a2f1f;
+
+    /* 辅助色 */
+    --accent-gray: #666;
+    --accent-dark: #1C1C1C;
+
+    /* 文本与背景 */
+    --text-light: #E2E2E2;
+    --bg-main: #0D0D0D;
+    --container-bg: rgba(22, 22, 22, 0.75);
+
+    /* 边角与阴影 */
+    --border-radius: 12px;
+    --shadow-soft: 0 8px 24px rgba(120, 0, 50, 0.35);
+
+    /* 动画与字体 */
+    --transition-speed: 0.25s;
+    --font-primary: 'FZBeiwaiKai', 'FZXingKai', 'GardenMing', 'SIMKAI', serif;
+    --font-secondary: 'SIMKAI', 'MPlus1M', 'MPlus2P', sans-serif;
+}
+
+/* =========================================================
+   全局样式
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    will-change: opacity, transform; /* 更精准的 will-change */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-primary);
+    color: var(--text-light);
+
+    background: linear-gradient(
+        -35deg,
+        var(--bg-main),
+        var(--secondary-green),
+        var(--primary-red),
+        var(--accent-dark)
+    );
+    background-size: 500% 500%;
+    animation: eerie-shift 80s ease-in-out infinite;
+}
+
+/* =========================================================
+   主容器（视觉核心）
+========================================================= */
+#game-container {
+    width: 95%;
+    max-width: 1280px;
+    height: min(80vh, 820px);
+    
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    padding: 30px;
+    background: var(--container-bg);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px) brightness(1.2);
+    box-shadow: var(--shadow-soft);
+
+    overflow: hidden;
+    contain: content; /* 强化渲染性能 */
+}
+
+@media (max-width:860px) {
+    #game-container {
+        flex-direction: column;
+        height: auto;
+        padding: 18px;
+    }
+}
+
+/* =========================================================
+   场景容器：左右双卡片，平分布局
+========================================================= */
+.game-scene-container {
+    display: flex;
+    gap: var(--card-gap, 20px);
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap; /* 窄屏自动上下布局 */
+    padding: 10px;
+}
+
+/* =========================================================
+   按钮（古风暗红 + 轻微浮动）
+========================================================= */
+button, a {
+    font-family: var(--font-secondary);
+    color: var(--text-light);
+
+    background: rgba(60, 0, 40, 0.45);
+    border: 1px solid rgba(120, 0, 50, 0.45);
+    border-radius: var(--border-radius);
+
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    backdrop-filter: blur(3px);
+}
+
+button:hover, a:hover {
+    background: rgba(120, 0, 50, 0.55);
+    box-shadow: 0 0 12px rgba(120, 0, 50, 0.45);
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   输入与表单
+========================================================= */
+input, textarea, select {
+    background: rgba(20,20,20,0.85);
+    color: var(--text-light);
+
+    border: 1px solid rgba(120,0,50,0.4);
+    border-radius: var(--border-radius);
+    padding: 6px 12px;
+
+    transition: all var(--transition-speed);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: rgba(120,0,50,0.55);
+    box-shadow: 0 0 8px rgba(120,0,50,0.35);
+    outline: none;
+}
+
+/* =========================================================
+   动态背景动画（低频律动）
+========================================================= */
+@keyframes eerie-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

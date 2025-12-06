@@ -1,0 +1,62 @@
+/* ========================================================
+光影效果容器 
+===========================================================*/
+#lightfx-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9980;
+    pointer-events: none;
+    will-change: transform, opacity, filter, box-shadow;
+}
+
+/* =========================================================
+   动画
+========================================================= */
+@keyframes fadeInBody {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInContainer {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   多层次脉动光影动画
+========================================================= */
+@keyframes eerie-pulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.95;
+        filter: brightness(1);
+        box-shadow:
+            0 0 4px rgba(255, 0, 0, 0.4),
+            0 0 8px rgba(139, 0, 0, 0.3),
+            0 0 16px rgba(139, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.008) rotate(1deg);
+        opacity: 1;
+        filter: brightness(1.1);
+        box-shadow:
+            0 0 8px rgba(255, 0, 0, 0.6),
+            0 0 16px rgba(139, 0, 0, 0.5),
+            0 0 32px rgba(139, 0, 0, 0.3);
+    }
+}
+
+/* =========================================================
+   动画调用示例
+========================================================= */
+#lightfx-container.active {
+    animation: fadeInContainer 0.8s ease-out forwards, eerie-pulse 2s ease-in-out infinite;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>虚数归墟 - 小说游戏</title>
+    
+    <link rel="icon" href="icon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="icon/favicon.ico">
+</head>
+
+<body>    
+
+    <!-- 低版本浏览器提示 -->
+    <div id="error-message" 
+         style="display:none; 
+                color:red; 
+                text-align:center; 
+                margin-top:50px;">
+        您的浏览器版本过低，无法运行本游戏。
+    </div>
+
+    <!-- 启动画面 & 光影容器 -->
+    <div id="start-screen-container"></div>
+    <div id="lightfx-container"></div>
+    
+    <!-- 游戏主容器 -->
+    <div id ="game-container"></div>
+
+    <!-- 全局加载器 -->
+    <script src="module/js/main.js"></script>
+    
+    <script>
+        // 检查现代浏览器功能
+        window.addEventListener('load', () => {
+            const isSupported = !!(document.head && document.addEventListener && document.querySelector && Object.create && Object.freeze && JSON);
+            if (!isSupported) {
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

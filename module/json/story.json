@@ -1,0 +1,62 @@
+{
+    "start": {
+        "id": "1",
+        "title": "幽墟入口",
+        
+        "text": "风声穿过残破的石门，如同一位老妪凄厉的低语。你的面前，是传说中无人敢踏足的「虚数归墟」...",
+        "background": "data/bg/1.jpg",
+        "bgm": "data/bgm/佳人伴孤灯（竹笛）.mp3",
+        "next": "encounter_ghost"
+    },
+    
+    "encounter_ghost": {
+        "id": "1.1",
+        "title": "血墨留痕",
+        "character": "神秘女子",
+        "text": "（她）身着破旧的红裙，侧影被月光拉得极长，手中提着一盏摇摇晃晃的白灯。",
+        "image": "data/bg/1.jpg",
+        "next": "dialogue_2"
+    },
+
+    "dialogue_2": {
+        "id": "2",
+        "title": "诡笑",
+        "character": "神秘女子",
+        "text": "她转过身，脸上挂着一抹诡异的笑，手中白灯的光芒，却照不亮她的眼睛。",
+        "effect": "eerie-pulse",
+        "choices": [
+            {
+                "text": "上前询问她的来历",
+                "target": "choice_approach"
+            },
+            {
+                "text": "转身，沿着来路逃离",
+                "target": "choice_hide"
+            }
+        ]
+    },
+
+    "choice_approach": {
+        "id": "3",
+        "title": "问路无归",
+        "character": "旁白",
+        "text": "你感觉自己的名字正在被她无声地吞噬。此地不宜久留。",
+        "next": "end_placeholder"
+    },
+
+    "choice_hide": {
+        "id": "4",
+        "title": "逃离",
+        "character": "旁白",
+        "text": "你逃了，但脚下的影子似乎比你跑得更快。",
+        "next": "end_placeholder"
+    },
+    
+    "end_placeholder": {
+        "id": "5",
+        "title": "故事暂歇",
+        "character": "旁白",
+        "text": "地基已经搭好，故事在这里告一段落。",
+        "next": "start"
+    }
+}

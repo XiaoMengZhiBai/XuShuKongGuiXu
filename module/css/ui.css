@@ -1,0 +1,208 @@
+/* =========================================================
+   左侧媒体区 - 自适应空间自动缩放
+========================================================= */
+.image-card {
+    flex: 1 1 calc(50% - var(--card-gap, 20px)/2);
+    min-width: 300px;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #7261618e;
+    border-radius: var(--border-radius, 12px);
+    overflow: hidden;
+    border: 3px solid var(--secondary-blue, #ee5d8d);
+    position: relative;
+
+    /* 光影淡入 */
+    opacity: 0;
+    animation: fadeIn 0.6s forwards;
+    box-shadow: 0 0 20px rgba(255,50,50,0.3);
+}
+
+/* 图片 & 视频：等比裁剪（cover）*/
+.image-card img,
+.image-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--border-radius, 12px);
+}
+
+/* =========================================================
+   右侧文字卡片 - 自适应内容高度
+========================================================= */
+.text-section {
+    flex: 1 1 calc(50% - var(--card-gap, 20px)/2);
+    min-width: 300px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    border: 3px solid var(--secondary-blue,  rgba(255,50,50,0.3));
+    border-radius: var(--border-radius, 12px);
+    background: rgba(219, 92, 177, 0.38);
+
+    /* 文本可滚动 */
+    overflow-y: auto;
+
+    /* 保持左右比例 */
+    aspect-ratio: 4 / 3;
+
+    /* 淡入效果 */
+    opacity: 0;
+    animation: fadeIn 0.6s forwards;
+
+    /* 让内部竖排块稳定排列 */
+    align-items: stretch;
+    gap: 12px;
+}
+
+/* =========================================================
+   故事标题样式（竖排 + 高亮 + 固定高度 + 居中）
+========================================================= */
+.story-title {
+    writing-mode: vertical-rl;       /* 竖排文字 */
+    white-space: pre-wrap;
+    text-align: center;
+
+    width: 100%;                     /* 宽度跟随父容器 */
+    height: 120px;                   /* 高度固定，可自定义 */
+
+    display: flex;
+    align-items: center;             /* 垂直居中 */
+    justify-content: center;         /* 水平居中 */
+
+    margin: 0 0 16px 0;
+    padding: 10px;
+
+    color: #ffdddd;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'SimHei', sans-serif;
+    line-height: 1.5;
+
+    text-shadow:
+        0 0 8px rgba(255,120,120,0.8),
+        0 0 14px rgba(255,60,60,0.6);
+}
+
+/* =========================================================
+   角色名字样式（竖排 + 居中 + 固定高度）
+========================================================= */
+.story-character {
+    /* writing-mode: vertical-rl; */
+    white-space: pre-wrap;
+    text-align: center;
+
+    width: 100%;                     /* 宽度跟随父容器 */
+    height: 100px;                   /* 高度固定，可自定义 */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 0 16px 0;
+    padding: 10px;
+
+    color: #ffbbbb;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'SimHei', sans-serif;
+    line-height: 1.5;
+
+    text-shadow:
+        0 0 6px rgba(255,100,100,0.7),
+        0 0 12px rgba(255,50,50,0.5);
+}
+
+/* =========================================================
+   正文样式（竖排 + 居中 + 固定高度 + 滚动）
+========================================================= */
+.story-text {
+    writing-mode: vertical-rl;
+    white-space: pre-wrap;
+    text-align: center;
+
+    width: 100%;                     /* 宽度跟随父容器 */
+    height: 300px;                   /* 高度固定，可自定义 */
+
+    display: flex;
+    align-items: center;             /* 内容垂直居中 */
+    justify-content: center;         /* 内容水平居中 */
+
+    margin: 0;
+    padding: 10px;
+
+    color: #ffaaaa;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'SimHei', sans-serif;
+    line-height: 1.6;
+
+    text-shadow:
+        0 0 4px rgba(255,80,80,0.6),
+        0 0 10px rgba(255,40,40,0.4);
+
+    overflow-y: auto;                /* 超出高度滚动 */
+}
+
+/* =========================================================
+   响应式：窄屏时垂直堆叠
+========================================================= */
+@media (max-width: 860px) {
+    .image-card,
+    .text-section {
+        flex: 1 1 100%;
+        min-width: unset;
+        aspect-ratio: auto;
+    }
+}
+
+/* =========================================================
+   打字机效果
+========================================================= */
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--primary-color, #333); }
+}
+
+.typing-cursor {
+    border-right: 3px solid var(--primary-color, #ff4444);
+    animation: blink 0.75s step-end infinite;
+}
+
+.typing-done {
+    border-color: transparent !important; 
+    animation: none;
+}
+
+/* =========================================================
+   光影按钮
+========================================================= */
+.glow-btn {
+    margin: 8px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(145deg, #900, #f33);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255,0,0,0.7), inset 0 0 8px rgba(255,100,100,0.3);
+    transition: all 0.3s ease;
+}
+.glow-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,0,0,0.9), inset 0 0 12px rgba(255,150,150,0.4);
+}
+
+/* =========================================================
+   淡入动画 - 平滑版
+========================================================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(1px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
