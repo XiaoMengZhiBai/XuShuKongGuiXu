@@ -49,7 +49,7 @@ class JsonExtractor {
      * @param {number} [speed=200] - 每个字符输入的时间间隔（毫秒）。
      * @returns {Promise<void>} 动画完成时解析的 Promise。
      */
-    static #typeWriterEffect(el, text, speed = 200) {
+    static _typeWriterEffect(el, text, speed = 200) {
         return new Promise(resolve => {
             let index = 0;
             el.innerHTML = '';
@@ -108,7 +108,7 @@ class JsonExtractor {
         }
 
         // 3. 执行打字机动画
-        return await JsonExtractor.#typeWriterEffect(targetEl, finalContent, speed);
+        return await JsonExtractor._typeWriterEffect(targetEl, finalContent, speed);
     }
 }
 

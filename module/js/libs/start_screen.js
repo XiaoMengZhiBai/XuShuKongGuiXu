@@ -443,7 +443,11 @@ let CONFIG = null; // 声明 CONFIG 变量，初始值为 null
                 this.analyser = analyser;
                 this.freqData = freqData;
             } catch(e) {
-                alert("无法加载或解码音频文件: " + e.message);
+                console.error("无法加载或解码音频文件:", e);
+                // 使用游戏内通知替代alert
+                if (window.GameUI) {
+                    window.GameUI.showNotification('❌ 音频加载失败', e.message, 'error');
+                }
             }
         }
         

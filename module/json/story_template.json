@@ -1,0 +1,203 @@
+{
+    "meta": {
+        "version": "2.0",
+        "title": "你的游戏标题",
+        "author": "作者名",
+        "description": "游戏描述",
+        "startNode": "prologue"
+    },
+    "characters": {
+        "protagonist": {
+            "name": "主角",
+            "avatar": "",
+            "color": "#ffcccc"
+        },
+        "character_a": {
+            "name": "角色A",
+            "avatar": "data/char/character_a.png",
+            "color": "#ff9999"
+        },
+        "character_b": {
+            "name": "角色B",
+            "avatar": "data/char/character_b.png",
+            "color": "#99ccff"
+        },
+        "narrator": {
+            "name": "旁白",
+            "avatar": "",
+            "color": "#cccccc"
+        }
+    },
+    "variables": {
+        "chapter": 1,
+        "affection_a": 0,
+        "affection_b": 0,
+        "key_item": false,
+        "player_choice": null
+    },
+    "achievements": {
+        "first_meet": {
+            "id": "first_meet",
+            "name": "初次相遇",
+            "description": "第一次遇到角色A",
+            "hidden": false
+        }
+    },
+    "nodes": {
+        "prologue": {
+            "id": "prologue",
+            "type": "narrative",
+            "title": "序章",
+            "character": "narrator",
+            "text": "故事从这里开始...",
+            "background": "data/bg/1.jpg",
+            "bgm": "data/bgm/主题曲.mp3",
+            "effect": "fadeIn",
+            "actions": [
+                {
+                    "type": "setVar",
+                    "key": "chapter",
+                    "value": 1
+                }
+            ],
+            "next": "chapter1_scene1"
+        },
+        "chapter1_scene1": {
+            "id": "chapter1_scene1",
+            "type": "dialogue",
+            "title": "第一章",
+            "character": "character_a",
+            "text": "你好，我是角色A。",
+            "background": "data/bg/1.jpg",
+            "image": "data/char/character_a.png",
+            "imagePosition": "right",
+            "actions": [
+                {
+                    "type": "unlockAchievement",
+                    "achievementId": "first_meet"
+                }
+            ],
+            "choices": [
+                {
+                    "id": "choice_greet",
+                    "text": "打招呼",
+                    "actions": [
+                        {
+                            "type": "incrementVar",
+                            "key": "affection_a",
+                            "value": 5
+                        }
+                    ],
+                    "target": "chapter1_scene2a"
+                },
+                {
+                    "id": "choice_ignore",
+                    "text": "无视",
+                    "actions": [
+                        {
+                            "type": "decrementVar",
+                            "key": "affection_a",
+                            "value": 5
+                        }
+                    ],
+                    "target": "chapter1_scene2b"
+                }
+            ]
+        },
+        "chapter1_scene2a": {
+            "id": "chapter1_scene2a",
+            "type": "dialogue",
+            "title": "第一章",
+            "character": "character_a",
+            "text": "很高兴认识你！",
+            "background": "data/bg/1.jpg",
+            "image": "data/char/character_a.png",
+            "imagePosition": "right",
+            "next": "chapter1_scene3"
+        },
+        "chapter1_scene2b": {
+            "id": "chapter1_scene2b",
+            "type": "narrative",
+            "title": "第一章",
+            "character": "narrator",
+            "text": "角色A看起来有些失望...",
+            "background": "data/bg/1.jpg",
+            "effect": "darken",
+            "next": "chapter1_scene3"
+        },
+        "chapter1_scene3": {
+            "id": "chapter1_scene3",
+            "type": "narrative",
+            "title": "第一章 完",
+            "character": "narrator",
+            "text": "第一章结束，敬请期待后续...",
+            "background": "data/bg/1.jpg",
+            "effect": "fadeIn",
+            "actions": [
+                {
+                    "type": "setVar",
+                    "key": "chapter",
+                    "value": 2
+                },
+                {
+                    "type": "saveCheckpoint",
+                    "checkpointId": "chapter1_end"
+                }
+            ],
+            "choices": [
+                {
+                    "id": "return_title",
+                    "text": "返回标题",
+                    "target": "title_screen"
+                }
+            ]
+        },
+        "title_screen": {
+            "id": "title_screen",
+            "type": "menu",
+            "title": "标题画面",
+            "text": "你的游戏标题",
+            "background": "data/bg/title.jpg",
+            "bgm": "data/bgm/主题曲.mp3",
+            "choices": [
+                {
+                    "id": "new_game",
+                    "text": "新游戏",
+                    "actions": [
+                        {
+                            "type": "resetVariables"
+                        }
+                    ],
+                    "target": "prologue"
+                },
+                {
+                    "id": "continue",
+                    "text": "继续游戏",
+                    "condition": "chapter > 1",
+                    "target": "chapter1_scene3"
+                },
+                {
+                    "id": "settings",
+                    "text": "设置",
+                    "actions": [
+                        {
+                            "type": "openSettings"
+                        }
+                    ],
+                    "target": null
+                }
+            ]
+        }
+    },
+    "checkpoints": {
+        "chapter1_end": {
+            "nodeId": "chapter1_scene3",
+            "variables": {
+                "chapter": 2,
+                "affection_a": 5,
+                "affection_b": 0,
+                "key_item": false
+            }
+        }
+    }
+}

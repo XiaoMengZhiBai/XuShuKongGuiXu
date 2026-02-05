@@ -1,0 +1,607 @@
+{
+    "version": "1.0",
+    "description": "装备数据配置文件 - 支持11个装备槽位",
+    "itemTypes": {
+        "headwear": "头饰",
+        "earring": "耳饰",
+        "necklace": "项链",
+        "underwear": "内衣",
+        "panties": "内裤",
+        "socks": "袜子",
+        "top": "上衣",
+        "bottom": "下装",
+        "bracelet": "手饰",
+        "anklet": "脚链",
+        "shoes": "鞋子"
+    },
+    "equipmentSlots": {
+        "headwear": {
+            "name": "头饰",
+            "icon": "🎩",
+            "max": 1
+        },
+        "earring": {
+            "name": "耳饰",
+            "icon": "💎",
+            "max": 1
+        },
+        "necklace": {
+            "name": "项链",
+            "icon": "📿",
+            "max": 1
+        },
+        "underwear": {
+            "name": "内衣",
+            "icon": "👙",
+            "max": 1
+        },
+        "panties": {
+            "name": "内裤",
+            "icon": "🩲",
+            "max": 1
+        },
+        "socks": {
+            "name": "袜子",
+            "icon": "🧦",
+            "max": 1
+        },
+        "top": {
+            "name": "上衣",
+            "icon": "👚",
+            "max": 1
+        },
+        "bottom": {
+            "name": "下装",
+            "icon": "👖",
+            "max": 1
+        },
+        "bracelet": {
+            "name": "手饰",
+            "icon": "⌚",
+            "max": 1
+        },
+        "anklet": {
+            "name": "脚链",
+            "icon": "⛓️",
+            "max": 1
+        },
+        "shoes": {
+            "name": "鞋子",
+            "icon": "👟",
+            "max": 1
+        }
+    },
+    "itemQuality": {
+        "common": {
+            "name": "普通",
+            "color": "#ffffff",
+            "border": "#888888"
+        },
+        "uncommon": {
+            "name": "优秀",
+            "color": "#1eff00",
+            "border": "#1eff00"
+        },
+        "rare": {
+            "name": "稀有",
+            "color": "#0070dd",
+            "border": "#0070dd"
+        },
+        "epic": {
+            "name": "史诗",
+            "color": "#a335ee",
+            "border": "#a335ee"
+        },
+        "legendary": {
+            "name": "传说",
+            "color": "#ff8000",
+            "border": "#ff8000"
+        }
+    },
+    "items": {
+        "headwear_1": {
+            "id": "headwear_1",
+            "name": "布巾",
+            "type": "headwear",
+            "quality": "common",
+            "icon": "🎗️",
+            "description": "普通的布巾，简单遮风挡雨。",
+            "stats": {
+                "defense": 2,
+                "hp": 5
+            },
+            "price": 50
+        },
+        "headwear_2": {
+            "id": "headwear_2",
+            "name": "青铜头盔",
+            "type": "headwear",
+            "quality": "uncommon",
+            "icon": "🎩",
+            "description": "青铜打造的头盔，提供基础保护。",
+            "stats": {
+                "defense": 8,
+                "hp": 15,
+                "magicDefense": 3
+            },
+            "price": 200
+        },
+        "headwear_3": {
+            "id": "headwear_3",
+            "name": "精铁战盔",
+            "type": "headwear",
+            "quality": "rare",
+            "icon": "🪖",
+            "description": "精铁打造的战盔，坚固耐用。",
+            "stats": {
+                "defense": 15,
+                "hp": 30,
+                "magicDefense": 5
+            },
+            "price": 500
+        },
+        "headwear_4": {
+            "id": "headwear_4",
+            "name": "龙鳞皇冠",
+            "type": "headwear",
+            "quality": "legendary",
+            "icon": "👑",
+            "description": "由龙鳞锻造的皇冠，蕴含王者之气。",
+            "stats": {
+                "defense": 30,
+                "hp": 60,
+                "magicDefense": 20,
+                "fireResistance": 30
+            },
+            "price": 5000
+        },
+        "earring_1": {
+            "id": "earring_1",
+            "name": "铜耳环",
+            "type": "earring",
+            "quality": "common",
+            "icon": "💍",
+            "description": "简单的铜耳环。",
+            "stats": {
+                "mp": 5,
+                "magicAttack": 2
+            },
+            "price": 30
+        },
+        "earring_2": {
+            "id": "earring_2",
+            "name": "银耳坠",
+            "type": "earring",
+            "quality": "uncommon",
+            "icon": "💎",
+            "description": "精致的银耳坠，微微提升魔力。",
+            "stats": {
+                "mp": 15,
+                "magicAttack": 8
+            },
+            "price": 150
+        },
+        "earring_3": {
+            "id": "earring_3",
+            "name": "秘晶耳环",
+            "type": "earring",
+            "quality": "epic",
+            "icon": "🔮",
+            "description": "蕴含秘晶能量的耳环，大幅提升魔法能力。",
+            "stats": {
+                "mp": 50,
+                "magicAttack": 25,
+                "magicDefense": 10
+            },
+            "price": 2000
+        },
+        "necklace_1": {
+            "id": "necklace_1",
+            "name": "麻绳项链",
+            "type": "necklace",
+            "quality": "common",
+            "icon": "📿",
+            "description": "用麻绳串起的简单项链。",
+            "stats": {
+                "defense": 1,
+                "hp": 3
+            },
+            "price": 20
+        },
+        "necklace_2": {
+            "id": "necklace_2",
+            "name": "银质护身符",
+            "type": "necklace",
+            "quality": "uncommon",
+            "icon": "🔱",
+            "description": "银制的护身符，提供一定的保护。",
+            "stats": {
+                "defense": 5,
+                "hp": 10,
+                "magicDefense": 5
+            },
+            "price": 180
+        },
+        "necklace_3": {
+            "id": "necklace_3",
+            "name": "龙心项链",
+            "type": "necklace",
+            "quality": "legendary",
+            "icon": "❤️",
+            "description": "由龙心碎片制成的项链，赋予佩戴者强大的生命力。",
+            "stats": {
+                "hp": 100,
+                "defense": 15,
+                "fireResistance": 40,
+                "iceResistance": 40
+            },
+            "price": 6000
+        },
+        "underwear_1": {
+            "id": "underwear_1",
+            "name": "粗布内衣",
+            "type": "underwear",
+            "quality": "common",
+            "icon": "👙",
+            "description": "简单的粗布内衣。",
+            "stats": {
+                "defense": 1,
+                "hp": 3
+            },
+            "price": 25
+        },
+        "underwear_2": {
+            "id": "underwear_2",
+            "name": "丝绸内衣",
+            "type": "underwear",
+            "quality": "uncommon",
+            "icon": "🧖",
+            "description": "柔软的丝绸内衣，舒适且有一定的保护作用。",
+            "stats": {
+                "defense": 3,
+                "hp": 8,
+                "magicDefense": 3
+            },
+            "price": 120
+        },
+        "underwear_3": {
+            "id": "underwear_3",
+            "name": "秘银胸衣",
+            "type": "underwear",
+            "quality": "rare",
+            "icon": "🔰",
+            "description": "秘银打造的胸衣，轻薄而坚固。",
+            "stats": {
+                "defense": 8,
+                "hp": 15,
+                "magicDefense": 12
+            },
+            "price": 600
+        },
+        "panties_1": {
+            "id": "panties_1",
+            "name": "粗布内裤",
+            "type": "panties",
+            "quality": "common",
+            "icon": "🩲",
+            "description": "简单的粗布内裤。",
+            "stats": {
+                "defense": 1,
+                "hp": 2
+            },
+            "price": 20
+        },
+        "panties_2": {
+            "id": "panties_2",
+            "name": "丝绸内裤",
+            "type": "panties",
+            "quality": "uncommon",
+            "icon": "🧣",
+            "description": "柔软的丝绸内裤。",
+            "stats": {
+                "defense": 2,
+                "hp": 5
+            },
+            "price": 100
+        },
+        "panties_3": {
+            "id": "panties_3",
+            "name": "秘银护腰",
+            "type": "panties",
+            "quality": "rare",
+            "icon": "🛡️",
+            "description": "秘银打造的护腰，保护腰腹部位。",
+            "stats": {
+                "defense": 6,
+                "hp": 10
+            },
+            "price": 450
+        },
+        "socks_1": {
+            "id": "socks_1",
+            "name": "粗布袜子",
+            "type": "socks",
+            "quality": "common",
+            "icon": "🧦",
+            "description": "简单的粗布袜子。",
+            "stats": {
+                "defense": 1,
+                "speed": 1
+            },
+            "price": 15
+        },
+        "socks_2": {
+            "id": "socks_2",
+            "name": "羊毛袜",
+            "type": "socks",
+            "quality": "uncommon",
+            "icon": "🧶",
+            "description": "保暖的羊毛袜，略微提升速度。",
+            "stats": {
+                "defense": 2,
+                "speed": 3,
+                "coldResistance": 20
+            },
+            "price": 80
+        },
+        "socks_3": {
+            "id": "socks_3",
+            "name": "疾风护腿",
+            "type": "socks",
+            "quality": "epic",
+            "icon": "🌪️",
+            "description": "蕴含风之力的护腿，大幅提升速度。",
+            "stats": {
+                "speed": 10,
+                "evasion": 12,
+                "moveSpeed": 15
+            },
+            "price": 1500
+        },
+        "top_1": {
+            "id": "top_1",
+            "name": "布衣",
+            "type": "top",
+            "quality": "common",
+            "icon": "👚",
+            "description": "普通的布制上衣。",
+            "stats": {
+                "defense": 3,
+                "hp": 5
+            },
+            "price": 50
+        },
+        "top_2": {
+            "id": "top_2",
+            "name": "皮甲",
+            "type": "top",
+            "quality": "uncommon",
+            "icon": "🦺",
+            "description": "兽皮制成的上衣，提供不错的防护。",
+            "stats": {
+                "defense": 8,
+                "hp": 15
+            },
+            "price": 200
+        },
+        "top_3": {
+            "id": "top_3",
+            "name": "秘银法袍",
+            "type": "top",
+            "quality": "epic",
+            "icon": "🧙",
+            "description": "附有魔力的秘银法袍，大幅提升魔法防御。",
+            "stats": {
+                "defense": 20,
+                "hp": 50,
+                "magicDefense": 40,
+                "mp": 100
+            },
+            "price": 2000
+        },
+        "top_4": {
+            "id": "top_4",
+            "name": "龙鳞战甲",
+            "type": "top",
+            "quality": "legendary",
+            "icon": "🛡️",
+            "description": "由龙鳞锻造的战甲，坚不可摧。",
+            "stats": {
+                "defense": 50,
+                "hp": 100,
+                "fireResistance": 50,
+                "iceResistance": 50
+            },
+            "price": 8000
+        },
+        "bottom_1": {
+            "id": "bottom_1",
+            "name": "布裤",
+            "type": "bottom",
+            "quality": "common",
+            "icon": "👖",
+            "description": "普通的布制裤子。",
+            "stats": {
+                "defense": 2,
+                "hp": 4
+            },
+            "price": 40
+        },
+        "bottom_2": {
+            "id": "bottom_2",
+            "name": "皮裤",
+            "type": "bottom",
+            "quality": "uncommon",
+            "icon": "🩳",
+            "description": "兽皮制成的裤子，提供不错的防护。",
+            "stats": {
+                "defense": 6,
+                "hp": 12
+            },
+            "price": 180
+        },
+        "bottom_3": {
+            "id": "bottom_3",
+            "name": "秘银护腿",
+            "type": "bottom",
+            "quality": "rare",
+            "icon": "🦵",
+            "description": "秘银打造的护腿，坚固而轻盈。",
+            "stats": {
+                "defense": 12,
+                "hp": 25,
+                "moveSpeed": 5
+            },
+            "price": 800
+        },
+        "bracelet_1": {
+            "id": "bracelet_1",
+            "name": "铜手环",
+            "type": "bracelet",
+            "quality": "common",
+            "icon": "⭕",
+            "description": "简单的铜手环。",
+            "stats": {
+                "attack": 2,
+                "hp": 3
+            },
+            "price": 35
+        },
+        "bracelet_2": {
+            "id": "bracelet_2",
+            "name": "银手镯",
+            "type": "bracelet",
+            "quality": "uncommon",
+            "icon": "💠",
+            "description": "精致的银手镯，提升攻击力。",
+            "stats": {
+                "attack": 8,
+                "mp": 10
+            },
+            "price": 160
+        },
+        "bracelet_3": {
+            "id": "bracelet_3",
+            "name": "龙血护腕",
+            "type": "bracelet",
+            "quality": "epic",
+            "icon": "🔴",
+            "description": "龙血炼制的护腕，大幅提升战斗力。",
+            "stats": {
+                "attack": 25,
+                "hp": 50,
+                "critical": 10
+            },
+            "price": 2500
+        },
+        "anklet_1": {
+            "id": "anklet_1",
+            "name": "铜脚链",
+            "type": "anklet",
+            "quality": "common",
+            "icon": "⛓️",
+            "description": "简单的铜脚链。",
+            "stats": {
+                "defense": 1,
+                "speed": 1
+            },
+            "price": 30
+        },
+        "anklet_2": {
+            "id": "anklet_2",
+            "name": "银脚链",
+            "type": "anklet",
+            "quality": "uncommon",
+            "icon": "💫",
+            "description": "精致的银脚链，略微提升速度。",
+            "stats": {
+                "speed": 3,
+                "evasion": 5
+            },
+            "price": 140
+        },
+        "anklet_3": {
+            "id": "anklet_3",
+            "name": "疾风脚环",
+            "type": "anklet",
+            "quality": "rare",
+            "icon": "🌬️",
+            "description": "蕴含风之力的脚环，大幅提升速度和闪避。",
+            "stats": {
+                "speed": 8,
+                "evasion": 10,
+                "moveSpeed": 12
+            },
+            "price": 700
+        },
+        "shoes_1": {
+            "id": "shoes_1",
+            "name": "草鞋",
+            "type": "shoes",
+            "quality": "common",
+            "icon": "👟",
+            "description": "简单的草鞋，适合行走。",
+            "stats": {
+                "speed": 2,
+                "evasion": 3
+            },
+            "price": 30
+        },
+        "shoes_2": {
+            "id": "shoes_2",
+            "name": "皮靴",
+            "type": "shoes",
+            "quality": "uncommon",
+            "icon": "🥾",
+            "description": "兽皮制成的靴子，坚固耐用。",
+            "stats": {
+                "speed": 5,
+                "defense": 5,
+                "evasion": 5
+            },
+            "price": 220
+        },
+        "shoes_3": {
+            "id": "shoes_3",
+            "name": "疾风靴",
+            "type": "shoes",
+            "quality": "rare",
+            "icon": "🌪️",
+            "description": "蕴含风之力的靴子，大幅提升速度。",
+            "stats": {
+                "speed": 10,
+                "evasion": 15,
+                "moveSpeed": 20
+            },
+            "price": 800
+        },
+        "shoes_4": {
+            "id": "shoes_4",
+            "name": "龙鳞战靴",
+            "type": "shoes",
+            "quality": "legendary",
+            "icon": "🐉",
+            "description": "由龙鳞锻造的战靴，坚不可摧。",
+            "stats": {
+                "speed": 15,
+                "defense": 20,
+                "fireResistance": 30,
+                "iceResistance": 30
+            },
+            "price": 4000
+        }
+    },
+    "startingItems": [
+        "headwear_1",
+        "earring_1",
+        "necklace_1",
+        "underwear_1",
+        "panties_1",
+        "socks_1",
+        "top_1",
+        "bottom_1",
+        "bracelet_1",
+        "anklet_1",
+        "shoes_1"
+    ]
+}

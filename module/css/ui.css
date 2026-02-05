@@ -135,17 +135,18 @@
     justify-content: center;         /* 内容水平居中 */
 
     margin: 0;
-    padding: 10px;
+    padding: 20px;                   /* 增加内边距，让文字更宽敞 */
 
-    color: #ffaaaa;
-    font-size: 16px;
+    color: #ffcccc;                  /* 提高文字亮度，增强对比度 */
+    font-size: 20px;                 /* 增大字体从16px到20px */
     font-weight: normal;
     font-family: 'SimHei', sans-serif;
-    line-height: 1.6;
+    line-height: 1.8;                /* 增加行高 */
+    letter-spacing: 0.2em;           /* 增加字符间距，让文字更舒展 */
 
     text-shadow:
-        0 0 4px rgba(255,80,80,0.6),
-        0 0 10px rgba(255,40,40,0.4);
+        0 0 6px rgba(255,80,80,0.8), /* 增强文字阴影 */
+        0 0 12px rgba(255,40,40,0.6);
 
     overflow-y: auto;                /* 超出高度滚动 */
 }
@@ -165,19 +166,164 @@
 /* =========================================================
    打字机效果
 ========================================================= */
-@keyframes blink {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: var(--primary-color, #333); }
+/* =========================================================
+   打字机光标闪烁动画
+========================================================= */
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
+/* =========================================================
+   弹跳动画（用于下一页提示）
+========================================================= */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* =========================================================
+   UI菜单动画
+========================================================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* =========================================================
+   背包物品悬停效果
+========================================================= */
+.inventory-item:hover {
+    box-shadow: 0 0 20px rgba(255, 128, 0, 0.5);
+    border-color: #ff8000 !important;
+}
+
+/* =========================================================
+   打字机效果样式
+========================================================= */
+
+/* 打字机光标效果 - 水平模式（使用伪元素实现光标） */
+
+.story-text.typing-cursor {
+
+    display: inline-block !important;
+
+    position: relative;
+
+    white-space: pre-wrap;
+
+    writing-mode: horizontal-tb !important;
+
+    text-align: left !important;
+
+    line-height: 1.6;
+
+}
+
+
+
+.story-text.typing-cursor::after {
+
+    content: '';
+
+    position: absolute;
+
+    right: -2px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 3px;
+
+    background-color: var(--primary-color, #ff4444);
+
+    animation: cursor-blink 0.5s step-end infinite; /* 从0.75秒改为0.5秒 */
+
+}
+
+
+
+/* 打字机光标效果 - 垂直模式 */
+
+.story-text.typing-cursor.vertical-mode {
+
+    display: inline-block !important;
+
+    position: relative;
+
+    writing-mode: vertical-rl !important;
+
+    text-orientation: upright !important;
+
+}
+
+
+
+.story-text.typing-cursor.vertical-mode::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: -2px;
+
+    height: 3px;
+
+    background-color: var(--primary-color, #ff4444);
+
+    animation: cursor-blink 0.5s step-end infinite; /* 从0.75秒改为0.5秒 */
+
+}
+
+/* 打字完成 - 移除光标 */
+.story-text.typing-done::after {
+    display: none;
+}
+
+/* 通用打字机光标样式（用于非 story-text 元素） - 水平模式 */
 .typing-cursor {
-    border-right: 3px solid var(--primary-color, #ff4444);
-    animation: blink 0.75s step-end infinite;
+    display: inline-block;
+    position: relative;
 }
 
-.typing-done {
-    border-color: transparent !important; 
-    animation: none;
+.typing-cursor::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--primary-color, #ff4444);
+    animation: cursor-blink 0.75s step-end infinite;
+}
+
+/* 打字完成 - 移除光标 */
+.typing-done::after {
+    display: none;
 }
 
 /* =========================================================
@@ -205,4 +351,225 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(1px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   选择按钮容器
+========================================================= */
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+}
+
+/* =========================================================
+   选择按钮样式
+========================================================= */
+.choice-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: '方正行楷_GBK', serif;
+    color: #ffcccc;
+    background: linear-gradient(135deg, #6b1a40 0%, #4a1430 50%, #3d0d25 100%);
+    border: 2px solid rgba(255, 100, 100, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 4px rgba(255, 80, 80, 0.5);
+    box-shadow: 0 4px 12px rgba(120, 0, 50, 0.3);
+}
+
+/* 动态光效背景 */
+.choice-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 70%
+    );
+    animation: shimmer 3s infinite;
+    transform: rotate(0deg);
+}
+
+@keyframes shimmer {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(180deg) translate(30%, 30%);
+    }
+    100% {
+        transform: rotate(360deg) translate(0, 0);
+    }
+}
+
+.choice-btn:hover {
+    background: linear-gradient(135deg, #9d2555 0%, #6b1a40 50%, #4a1430 100%);
+    border-color: rgba(255, 150, 150, 1);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(180, 0, 60, 0.6), 0 0 30px rgba(255, 0, 100, 0.4);
+    color: #ffffff;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 12px 24px rgba(180, 0, 60, 0.6), 0 0 30px rgba(255, 0, 100, 0.4);
+    }
+    50% {
+        box-shadow: 0 16px 32px rgba(220, 0, 80, 0.8), 0 0 40px rgba(255, 50, 150, 0.6);
+    }
+}
+
+.choice-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(180, 0, 60, 0.5);
+}
+
+/* 选择按钮被选中后的状态 */
+.choice-btn.selected {
+    background: linear-gradient(135deg, #1a9e7a 0%, #0d7a5e 50%, #0a5a45 100%);
+    border-color: rgba(100, 255, 200, 1);
+    color: #ccffee;
+    box-shadow: 0 4px 12px rgba(0, 200, 150, 0.4);
+}
+
+/* =========================================================
+   下一页指示器动画
+========================================================= */
+.next-page-indicator {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* =========================================================
+   按钮确认弹窗
+========================================================= */
+.choice-confirm-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid #4a9eff;
+    border-radius: 12px;
+    padding: 30px;
+    z-index: 10001;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 0 30px rgba(74, 158, 255, 0.5);
+}
+
+.choice-confirm-modal h3 {
+    color: #4a9eff;
+    margin-bottom: 15px;
+    font-family: '方正行楷_GBK', serif;
+}
+
+.choice-confirm-modal p {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.choice-confirm-modal .button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.choice-confirm-modal button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: '方正行楷_GBK', serif;
+    transition: all 0.3s ease;
+}
+
+.choice-confirm-modal button.confirm {
+    background: #4a9eff;
+    color: white;
+}
+
+.choice-confirm-modal button.confirm:hover {
+    background: #6ab4ff;
+    transform: translateY(-2px);
+}
+
+.choice-confirm-modal button.cancel {
+    background: rgba(120, 0, 50, 0.5);
+    color: white;
+}
+
+.choice-confirm-modal button.cancel:hover {
+    background: rgba(180, 0, 80, 0.7);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   背包系统动画效果
+========================================================= */
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

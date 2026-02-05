@@ -1,0 +1,343 @@
+{
+    "meta": {
+        "version": "2.0",
+        "title": "虚数归墟",
+        "author": "晓梦",
+        "description": "古风悬疑视觉小说",
+        "startNode": "chapter1_prologue"
+    },
+    
+    "characters": {
+        "protagonist": {
+            "name": "你",
+            "avatar": "",
+            "color": "#ffcccc"
+        },
+       
+        "mysterious_woman": {
+            "name": "神秘女子",
+            "avatar": "data/char/woman.png",
+            "color": "#ff9999"
+        },
+       
+        "narrator": {
+            "name": "旁白",
+            "avatar": "",
+            "color": "#cccccc"
+        }
+    },
+    
+    "variables": {
+        "sanity": 100,
+        "karma": 0,
+        "encountered_ghost": false,
+        "route": null,
+        "chapter_progress": 0
+    },
+    
+    "achievements": {
+        "first_encounter": {
+            "id": "first_encounter",
+            "name": "初遇",
+            "description": "第一次遇到神秘女子",
+            "hidden": false
+        },
+        
+        "coward": {
+            "id": "coward",
+            "name": "逃兵",
+            "description": "选择逃离而不是面对",
+            "hidden": false
+        },
+        
+        "brave": {
+            "id": "brave",
+            "name": "勇者",
+            "description": "选择面对未知",
+            "hidden": false
+        }
+    },
+    
+    "nodes": {
+        "chapter1_prologue": {
+            "id": "c1_p0",
+            "type": "narrative",
+            "title": "序章：幽墟入口",
+            "character": "narrator",
+            "text": "风声穿过残破的石门，如同一位老妪凄厉的低语。你的面前，是传说中无人敢踏足的「虚数归墟」...",
+            "background": "data/bg/1.jpg",
+            "bgm": "../../data/bgm/佳人伴孤灯（竹笛）.mp3",
+            "bgmVolume": 0.7,
+            "se": "",
+            "seVolume": 0.5,
+            "effect": "fadeIn",
+            "actions": [
+                {
+                    "type": "setVar",
+                    "key": "chapter_progress",
+                    "value": 1
+                },
+                {
+                    "type": "setVar",
+                    "key": "sanity",
+                    "value": 100
+                }
+            ],
+            "choices": [
+                {
+                    "text": "继续",
+                    "target": "chapter1_encounter"
+                }
+            ]
+        },
+        "chapter1_encounter": {
+            "id": "c1_p1",
+            "type": "dialogue",
+            "title": "第一章：血墨留痕",
+            "character": "mysterious_woman",
+            "text": "（她）身着破旧的红裙，侧影被月光拉得极长，手中提着一盏摇摇晃晃的白灯。",
+            "background": "data/bg/1.jpg",
+            "image": "data/char/woman.png",
+            "imagePosition": "right",
+            "effect": "eerie-pulse",
+            "actions": [
+                {
+                    "type": "setVar",
+                    "key": "encountered_ghost",
+                    "value": true
+                },
+                {
+                    "type": "unlockAchievement",
+                    "achievementId": "first_encounter"
+                },
+                {
+                    "type": "playSE",
+                    "file": "data/se/ghost_whisper.mp3",
+                    "volume": 0.3
+                }
+            ],
+            "choices": [
+                {
+                    "text": "继续",
+                    "target": "chapter1_dialogue"
+                }
+            ]
+        },
+        "chapter1_dialogue": {
+            "id": "c1_p2",
+            "type": "dialogue",
+            "title": "诡笑",
+            "character": "mysterious_woman",
+            "text": "她转过身，脸上挂着一抹诡异的笑，手中白灯的光芒，却照不亮她的眼睛。",
+            "background": "data/bg/1.jpg",
+            "image": "data/char/woman.png",
+            "imagePosition": "right",
+            "effect": "shake",
+            "choices": [
+                {
+                    "id": "choice_approach",
+                    "text": "上前询问她的来历",
+                    "condition": null,
+                    "actions": [
+                        {
+                            "type": "setVar",
+                            "key": "route",
+                            "value": "approach"
+                        },
+                        {
+                            "type": "incrementVar",
+                            "key": "karma",
+                            "value": 5
+                        },
+                        {
+                            "type": "unlockAchievement",
+                            "achievementId": "brave"
+                        }
+                    ],
+                    "target": "chapter1_approach"
+                },
+                {
+                    "id": "choice_hide",
+                    "text": "转身，沿着来路逃离",
+                    "condition": null,
+                    "actions": [
+                        {
+                            "type": "setVar",
+                            "key": "route",
+                            "value": "escape"
+                        },
+                        {
+                            "type": "decrementVar",
+                            "key": "sanity",
+                            "value": 10
+                        },
+                        {
+                            "type": "unlockAchievement",
+                            "achievementId": "coward"
+                        }
+                    ],
+                    "target": "chapter1_escape"
+                }
+            ]
+        },
+        "chapter1_approach": {
+            "id": "c1_p3a",
+            "type": "dialogue",
+            "title": "问路无归",
+            "character": "mysterious_woman",
+            "text": "你感觉自己的名字正在被她无声地吞噬。此地不宜久留。",
+            "background": "data/bg/1.jpg",
+            "image": "data/char/woman.png",
+            "imagePosition": "right",
+            "effect": "darken",
+            "actions": [
+                {
+                    "type": "playSE",
+                    "file": "data/se/heartbeat.mp3",
+                    "volume": 0.4
+                },
+                {
+                    "type": "changeBGM",
+                    "file": "data/bgm/紧张.mp3",
+                    "volume": 0.6
+                }
+            ],
+            "choices": [
+                {
+                    "text": "继续",
+                    "target": "chapter1_cliffhanger"
+                }
+            ]
+        },
+        "chapter1_escape": {
+            "id": "c1_p3b",
+            "type": "narrative",
+            "title": "逃离",
+            "character": "narrator",
+            "text": "你逃了，但脚下的影子似乎比你跑得更快。无论你跑多快，它始终在你身后...",
+            "background": "data/bg/1.jpg",
+            "effect": "blur",
+            "actions": [
+                {
+                    "type": "playSE",
+                    "file": "data/se/footsteps_fast.mp3",
+                    "volume": 0.5
+                }
+            ],
+            "choices": [
+                {
+                    "text": "继续",
+                    "target": "chapter1_cliffhanger"
+                }
+            ]
+        },
+        "chapter1_cliffhanger": {
+            "id": "c1_p4",
+            "type": "narrative",
+            "title": "第一章 完",
+            "character": "narrator",
+            "text": "第一章结束。敬请期待后续剧情...",
+            "background": "data/bg/1.jpg",
+            "effect": "fadeIn",
+            "actions": [
+                {
+                    "type": "setVar",
+                    "key": "chapter_progress",
+                    "value": 2
+                },
+                {
+                    "type": "saveCheckpoint",
+                    "checkpointId": "chapter1_end"
+                }
+            ],
+            "choices": [
+                {
+                    "id": "choice_return_title",
+                    "text": "返回标题",
+                    "condition": null,
+                    "actions": [],
+                    "target": "title_screen"
+                },
+                {
+                    "id": "choice_continue",
+                    "text": "继续游戏",
+                    "condition": "chapter_progress >= 2",
+                    "actions": [],
+                    "target": "chapter2_prologue"
+                }
+            ]
+        },
+        "chapter2_prologue": {
+            "id": "c2_p0",
+            "type": "narrative",
+            "title": "第二章：未完待续",
+            "character": "narrator",
+            "text": "更多精彩内容正在开发中...",
+            "background": "data/bg/1.jpg",
+            "bgm": "data/bgm/佳人伴孤灯（竹笛）.mp3",
+            "choices": [
+                {
+                    "text": "返回标题",
+                    "target": "title_screen"
+                }
+            ]
+        },        "title_screen": {
+            "id": "title",
+            "type": "menu",
+            "title": "标题画面",
+            "text": "虚数归墟",
+            "background": "data/bg/1.jpg",
+            "bgm": "data/bgm/主题曲.mp3",
+            "choices": [
+                {
+                    "id": "menu_new_game",
+                    "text": "新游戏",
+                    "condition": null,
+                    "actions": [
+                        {
+                            "type": "resetVariables"
+                        }
+                    ],
+                    "target": "chapter1_prologue"
+                },
+                {
+                    "id": "menu_continue",
+                    "text": "继续游戏",
+                    "condition": "chapter_progress > 0",
+                    "actions": [],
+                    "target": "checkpoint"
+                },
+                {
+                    "id": "menu_settings",
+                    "text": "设置",
+                    "condition": null,
+                    "actions": [
+                        {
+                            "type": "openSettings"
+                        }
+                    ],
+                    "target": null
+                },
+                {
+                    "id": "menu_gallery",
+                    "text": "图鉴",
+                    "condition": "chapter_progress >= 1",
+                    "actions": [],
+                    "target": "gallery_screen"
+                }
+            ]
+        }
+    },
+    "checkpoints": {
+        "chapter1_end": {
+            "nodeId": "chapter1_cliffhanger",
+            "variables": {
+                "chapter_progress": 2,
+                "sanity": 90,
+                "karma": 5,
+                "encountered_ghost": true,
+                "route": "approach"
+            }
+        }
+    }
+}
